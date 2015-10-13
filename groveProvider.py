@@ -4,7 +4,7 @@ import grovepi
 import paho.mqtt.client as mqtt
 
 mqttc = mqtt.Client("bastideGroveProvider")
-mqttc.connect("test.mosquitto.org", 1883)
+mqttc.connect("localhost", 1883)
 mqttc.loop_start()
 
 # Connect the Rotary Angle Sensor to analog port A2
@@ -19,7 +19,7 @@ while True:
     try:
         # Read resistance from Potentiometer
         newValue = grovepi.analogRead(potentiometer)
-        # print "Read: " + str(newValue)
+        print "Read: " + str(newValue)
         if (newValue != oldValue):
             oldValue = newValue
             print "Sending: " + str(newValue)
